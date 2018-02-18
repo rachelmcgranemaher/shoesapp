@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Shoesapp</title>
+	
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +10,34 @@
   </head>
 
   <body>
+ 
+ <header class="navbar navbar-inverse" role="navigation"></nav>
+    <div class = "container"
+       <ul class = "nav navbar-nav navbar-right" >
+		    <% if !signed_in? %>
+			<%= link_to "Sign In", login_path %>
+			<% else %>
+			Hi <%= @current_user.name %></li>
+			<%= link_to "Sign Out", logout_path %>
+		  <% end %>
+          
+		  <%= link_to "Home ", root_path %>
+		  <%= link_to "Products ", products_path %>
+		  <%= link_to "Users ", users_path %>
+		  <%= link_to "Deliveries ", deliveries_path %>
+		  <%= link_to "Orders ", orders_path %>
+		  <%= link_to "My GitHub", 'https://github.com/rachelmcgranemaher' %>
+		  
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <% flash.each do |key, value| %>
+	<div class ="flash <%= key %>">
+		<%= value %>
+	</div>
+  <% end %>
     <%= yield %>
   </body>
 </html>

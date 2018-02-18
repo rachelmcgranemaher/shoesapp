@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-has_many :orders, dependent: :destroy
-validates :email, uniqueness: true
-validates :first_name, presence: true
-validates :last_name, presence: true
-validates :password, presence: true
+	has_secure_password
+	has_many :comments, :dependent => :destroy
+
+
+	validates_uniqueness_of :email
 end

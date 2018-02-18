@@ -1,9 +1,7 @@
 class PagesController < ApplicationController
-def products
+  def home
+  end
 
-end
-
-def deliveries
-
-end 
+  def about
+  end
 end
